@@ -103,7 +103,8 @@ typedef struct GGPOLocalEndpoint {
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INPUT_DROPPED,          8)    \
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_PLAYER_DISCONNECTED,    9)    \
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_TOO_MANY_SPECTATORS,   10)    \
-   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INVALID_REQUEST,       11)
+   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INVALID_REQUEST,       11)    \
+   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_SYNC_TEST_ERROR,       12)
 
 #define GGPO_ERRORLIST_ENTRY(name, value)       name = value,
 typedef enum {
@@ -152,6 +153,7 @@ typedef enum {
    GGPO_EVENTCODE_TIMESYNC                     = 1005,
    GGPO_EVENTCODE_CONNECTION_INTERRUPTED       = 1006,
    GGPO_EVENTCODE_CONNECTION_RESUMED           = 1007,
+   GGPO_EVENTCODE_SYNC_TEST_ERROR              = 1008,
 } GGPOEventCode;
 
 /*
@@ -186,6 +188,9 @@ typedef struct {
       struct {
          GGPOPlayerHandle  player;
       } connection_resumed;
+      struct {
+        const char*        error_message;
+      } sync_test_error;
    } u;
 } GGPOEvent;
 

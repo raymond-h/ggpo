@@ -34,7 +34,7 @@ protected:
       GameInput   input;
    };
 
-   void RaiseSyncError(const char *fmt, ...);
+   GGPOErrorCode RaiseSyncError(const char *fmt, ...);
    void BeginLog(int saving);
    void EndLog();
    void LogSaveStates(SavedInfo &info);
